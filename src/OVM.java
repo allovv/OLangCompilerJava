@@ -33,7 +33,9 @@ static final int
 
    cmIn      = -21,
    cmOut     = -22,
-   cmOutLn   = -23;
+   cmOutLn   = -23,
+
+   cmPause   = -100;
 
 static int M[] = new int[MEMSIZE];
 
@@ -148,6 +150,12 @@ static void Run() {
             break;
          case cmStop:
             break loop;
+
+            //*******************
+         case cmPause:
+            return;
+            //*******************
+
          default:
             System.out.println("OVM: Недопустимый код операции");
             break loop;
@@ -155,8 +163,91 @@ static void Run() {
    System.out.println();
    if( SP < MEMSIZE )
       System.out.println("Код возврата " + M[SP]);
-   System.out.print("������ ����");
+   System.out.print("Выполнено успешно");
    readln();
+}
+
+static void ShowCode() {
+   for (int i = 0; i < Gen.PC; i++) {
+      System.out.print(i + ")");
+      switch (M[i]) {
+         case cmStop:
+            System.out.println("Stop");
+            break;
+         case cmAdd:
+            System.out.println("Add");
+            break;
+         case cmSub:
+            System.out.println("Sub");
+            break;
+         case cmMult:
+            System.out.println("Mult");
+            break;
+         case cmDiv:
+            System.out.println("Div");
+            break;
+         case cmMod:
+            System.out.println("Mod");
+            break;
+         case cmNeg:
+            System.out.println("Neg");
+            break;
+         case cmLoad:
+            System.out.println("Load");
+            break;
+         case cmSave:
+            System.out.println("Save");
+            break;
+         case cmDup:
+            System.out.println("Dup");
+            break;
+         case cmDrop:
+            System.out.println("Drop");
+            break;
+         case cmSwap:
+            System.out.println("Swap");
+            break;
+         case cmOver:
+            System.out.println("Over");
+            break;
+         case cmGOTO:
+            System.out.println("GOTO");
+            break;
+         case cmIfEQ:
+            System.out.println("IFEQ");
+            break;
+         case cmIfNE:
+            System.out.println("IfNE");
+            break;
+         case cmIfLE:
+            System.out.println("IfLE");
+            break;
+         case cmIfLT:
+            System.out.println("IfLT");
+            break;
+         case cmIfGE:
+            System.out.println("IfGE");
+            break;
+         case cmIfGT:
+            System.out.println("IfGT");
+            break;
+         case cmIn:
+            System.out.println("In");
+            break;
+         case cmOut:
+            System.out.println("Out");
+            break;
+         case cmOutLn:
+            System.out.println("OutLn");
+            break;
+         case cmPause:
+            System.out.println("Pause");
+            break;
+         default:
+            System.out.println(M[i]);
+            break;
+      }
+   }
 }
 
 }

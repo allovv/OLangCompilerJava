@@ -21,6 +21,7 @@ public static void main(String[] args) {
       Location.Path = args[0];
    Init();         //инициализация
    Pars.Compile(); //компиляция
+   OVM.ShowCode();
    OVM.Run();      //выполнение
    Done();         //завершение
 }

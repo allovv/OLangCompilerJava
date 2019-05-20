@@ -14,6 +14,8 @@ static final int
    spOutInt = 10,
    spOutLn  = 11;
 
+static boolean genPause = false;
+
 static void Check(int L, String M) {
    if( Scan.Lex != L )
       Error.Expected(M);
@@ -529,6 +531,11 @@ static void Module() {
       Import();
    DeclSeq();
    if( Scan.Lex == Scan.lexBEGIN ) {
+
+      //******************
+      genPause = true;
+      //******************
+
       Scan.NextLex();
       StatSeq();
    }

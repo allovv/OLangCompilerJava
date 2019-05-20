@@ -22,6 +22,13 @@ class Text {
             Ch = chEOT;
          else if( Ch == '\n' ) {
             System.out.println();
+
+            //***********************
+            if (Pars.genPause) {
+               Gen.Cmd(OVM.cmPause);
+            }
+            //***********************
+
             Location.Line++; Location.Pos = 0; Ch = chEOL;
             }
          else if( Ch == '\r' )
