@@ -19,6 +19,14 @@ public static void main(String[] args) {
       Location.Path = null;
    else
       Location.Path = args[0];
+
+   //*******************************
+   OLangGUI OGUI = new OLangGUI();
+   OGUI.initLabel();
+   OGUI.initFrame();
+   OGUI.initPanel();
+   //*******************************
+
    Init();         //инициализация
    Pars.Compile(); //компиляция
    OVM.ShowCode();
