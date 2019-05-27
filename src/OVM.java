@@ -153,7 +153,7 @@ static void Run() {
 
             //*******************
          case cmPause:
-            return;
+            break;
             //*******************
 
          default:

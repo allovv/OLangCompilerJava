@@ -96,6 +96,8 @@ static void VarDecl() {
       NameRef = Table.NewName(Scan.Name, Table.catVar);
       NameRef.Typ = Table.typInt;
       Scan.NextLex();
+
+      OLangGUI.numVariables++;
    }
    while( Scan.Lex == Scan.lexComma ) {
       Scan.NextLex();
@@ -105,6 +107,8 @@ static void VarDecl() {
          NameRef = Table.NewName(Scan.Name, Table.catVar );
          NameRef.Typ = Table.typInt;
          Scan.NextLex();
+
+         OLangGUI.numVariables++;
       }
    }
    Check(Scan.lexColon, "\":\"");

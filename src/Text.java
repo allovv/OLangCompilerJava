@@ -1,6 +1,11 @@
 // Драйвер исходного текста
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 class Text {
 
@@ -15,6 +20,7 @@ class Text {
    static int Ch = chEOT;
 
    private static InputStream f;
+   static ArrayList<String> textFile = new ArrayList<String>();
 
    static void NextCh() {
       try {
@@ -54,7 +60,7 @@ class Text {
             f = new FileInputStream(Location.Path);
             Ok = true; Message = "Ok";
             Location.Pos = 0; Location.Line = 1;
-            NextCh(); 
+            NextCh();
          } catch (IOException e) {
             Ok = false;
             Message = "Входной файл не найден";
@@ -65,6 +71,20 @@ class Text {
       try {
          f.close();
       } catch (IOException e) {};
+   }
+
+   static void GetProgrammText() {
+      try (BufferedReader reader = new BufferedReader(
+              new InputStreamReader(
+                      new FileInputStream("Primes.o"), StandardCharsets.UTF_8))){
+         String line;
+         while ((line = reader.readLine()) != null) {
+            textFile.add(line);
+         }
+      } catch (IOException e) {
+         System.out.println("ERROR!");
+         // log error
+      }
    }
 
 }

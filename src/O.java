@@ -21,16 +21,21 @@ public static void main(String[] args) {
       Location.Path = args[0];
 
    //*******************************
+   Text.GetProgrammText();
    OLangGUI OGUI = new OLangGUI();
-   OGUI.initLabel();
-   OGUI.initFrame();
-   OGUI.initPanel();
+
+   OGUI.createGUI();
+   OGUI.outputTextProgramm();
    //*******************************
 
    Init();         //инициализация
    Pars.Compile(); //компиляция
    OVM.ShowCode();
-   OVM.Run();      //выполнение
+
+   //*******************************
+   //*******************************
+
+   //OVM.Run();      //выполнение
    Done();         //завершение
 }
 
