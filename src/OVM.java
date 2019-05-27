@@ -169,82 +169,82 @@ static void Run() {
 
 static void ShowCode() {
    for (int i = 0; i < Gen.PC; i++) {
-      System.out.print(i + ")");
+      OLangGUI.outputTextArea.append(i + ")");
       switch (M[i]) {
          case cmStop:
-            System.out.println("Stop");
+            OLangGUI.outputTextArea.append("Stop!" + "\n");
             break;
          case cmAdd:
-            System.out.println("Add");
+            OLangGUI.outputTextArea.append("Add" + "\n");
             break;
          case cmSub:
-            System.out.println("Sub");
+            OLangGUI.outputTextArea.append("Sub" + "\n");
             break;
          case cmMult:
-            System.out.println("Mult");
+            OLangGUI.outputTextArea.append("Mult" + "\n");
             break;
          case cmDiv:
-            System.out.println("Div");
+            OLangGUI.outputTextArea.append("Div" + "\n");
             break;
          case cmMod:
-            System.out.println("Mod");
+            OLangGUI.outputTextArea.append("Mod" + "\n");
             break;
          case cmNeg:
-            System.out.println("Neg");
+            OLangGUI.outputTextArea.append("Neg" + "\n");
             break;
          case cmLoad:
-            System.out.println("Load");
+            OLangGUI.outputTextArea.append("Load" + "\n");
             break;
          case cmSave:
-            System.out.println("Save");
+            OLangGUI.outputTextArea.append("Save" + "\n");
             break;
          case cmDup:
-            System.out.println("Dup");
+            OLangGUI.outputTextArea.append("Dup" + "\n");
             break;
          case cmDrop:
-            System.out.println("Drop");
+            OLangGUI.outputTextArea.append("Drop" + "\n");
             break;
          case cmSwap:
-            System.out.println("Swap");
+            OLangGUI.outputTextArea.append("Swap" + "\n");
             break;
          case cmOver:
-            System.out.println("Over");
+            OLangGUI.outputTextArea.append("Over" + "\n");
             break;
          case cmGOTO:
-            System.out.println("GOTO");
+            OLangGUI.outputTextArea.append("GOTO" + "\n");
             break;
          case cmIfEQ:
-            System.out.println("IFEQ");
+            OLangGUI.outputTextArea.append("IFEQ" + "\n");
             break;
          case cmIfNE:
-            System.out.println("IfNE");
+            OLangGUI.outputTextArea.append("IfNE" + "\n");
             break;
          case cmIfLE:
-            System.out.println("IfLE");
+            OLangGUI.outputTextArea.append("IfLE" + "\n");
             break;
          case cmIfLT:
-            System.out.println("IfLT");
+            OLangGUI.outputTextArea.append("IfLT" + "\n");
             break;
          case cmIfGE:
-            System.out.println("IfGE");
+            OLangGUI.outputTextArea.append("IfGE" + "\n");
             break;
          case cmIfGT:
-            System.out.println("IfGT");
+            OLangGUI.outputTextArea.append("IfGT" + "\n");
             break;
          case cmIn:
-            System.out.println("In");
+            OLangGUI.outputTextArea.append("In" + "\n");
             break;
          case cmOut:
-            System.out.println("Out");
+            OLangGUI.outputTextArea.append("Out" + "\n");
             break;
          case cmOutLn:
-            System.out.println("OutLn");
+            OLangGUI.outputTextArea.append("OutLn" + "\n");
             break;
          case cmPause:
-            System.out.println("Pause");
+            OLangGUI.outputTextArea.append("Pause" + "\n");
             break;
          default:
-            System.out.println(M[i]);
+            OLangGUI.outputTextArea.append(M[i] + "\n");
             break;
       }
    }

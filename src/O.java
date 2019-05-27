@@ -14,7 +14,7 @@ static void Done() {
 }
 
 public static void main(String[] args) {
-   System.out.println("\n Компилятор языка О");
+   OLangGUI.outputTextArea.append("\n Компилятор языка О" + "\n");
    if( args.length == 0 )
       Location.Path = null;
    else
@@ -27,16 +27,6 @@ public static void main(String[] args) {
    OGUI.createGUI();
    OGUI.outputTextProgramm();
    //*******************************
-
-   Init();         //инициализация
-   Pars.Compile(); //компиляция
-   OVM.ShowCode();
-
-   //*******************************
-   //*******************************
-
-   //OVM.Run();      //выполнение
-   Done();         //завершение
 }
 
 }

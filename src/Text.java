@@ -27,7 +27,7 @@ class Text {
          if( (Ch = f.read()) == -1 )
             Ch = chEOT;
          else if( Ch == '\n' ) {
-            System.out.println();
+            OLangGUI.outputTextArea.append("\n");
 
             //***********************
             if (Pars.genPause) {
@@ -40,19 +40,19 @@ class Text {
          else if( Ch == '\r' )
             NextCh();
          else if( Ch != '\t' ) {
-            System.out.write(Ch); Location.Pos++;
+            OLangGUI.outputTextArea.append(Character.toString((char)Ch));
+            Location.Pos++;
             }
          else
             do
-               System.out.print(' ');
+               OLangGUI.outputTextArea.append(" ");
             while( ++Location.Pos % TABSIZE != 0 );
       } catch (IOException e) {};
    }
 
    static void Reset() {
       if( Location.Path == null ) {
-         System.out.println(
-            "Формат вызова:\n   О <Входной файл>");
+         OLangGUI.outputTextArea.append("Формат вызова:\n   О <Входной файл>");
          System.exit(1);
          }
       else 
@@ -82,7 +82,7 @@ class Text {
             textFile.add(line);
          }
       } catch (IOException e) {
-         System.out.println("ERROR!");
+         OLangGUI.outputTextArea.append("ERROR!");
          // log error
       }
    }
