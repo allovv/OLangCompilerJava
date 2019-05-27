@@ -41,7 +41,7 @@ import java.awt.event.ActionListener;
 
 public class OLangGUI extends JFrame {
 
-    static int numVariables = 0;
+    public static int numVariables = 0;
 
     Font font = new Font("Century Gothic", Font.BOLD, 14);
 
@@ -49,19 +49,18 @@ public class OLangGUI extends JFrame {
     static JFrame frame = getFrame();
 
     //простая панель для группировки элементов
-    static JPanel panel = new JPanel();
-
-    //просто какой-либо текст.
-    static JLabel label = new JLabel("THIS IS ODebugger");
+    static JPanel mainPanel = new JPanel();
+    static JPanel additionalPanel = new JPanel();
 
     //для работы с текстом
-    static  JTextArea textArea = new JTextArea(20, 10);         //поле с текстом
+    static  JTextArea textArea = new JTextArea(10, 10);         //поле с текстом
     static  JScrollPane inputScrollPane = new JScrollPane(textArea);
 
-    static  JTextArea outputTextArea = new JTextArea(10, 10);         //поле с текстом
+    static  JTextArea outputTextArea = new JTextArea(20, 10);         //поле с текстом
     static  JScrollPane outputScrollPane = new JScrollPane(outputTextArea);
 
     //для пользовательского ввода
+    static  JTextField inputText = new JTextField(10);         //поле с текстом
 
     //кнпока
     static JButton runButton = new JButton("RUN");
@@ -71,21 +70,26 @@ public class OLangGUI extends JFrame {
         Border solidBorder = BorderFactory.createLineBorder(Color.BLACK, 1);
         Font font = new Font("Century Gothic", Font.BOLD, 14);
 
-        panel.setBorder(BorderFactory.createTitledBorder("MainWindow"));
-        panel.setBackground(Color.GRAY);
-        panel.setFont(font);
-        panel.setLayout(new BorderLayout());
-        frame.add(panel);
+        mainPanel.setBorder(BorderFactory.createTitledBorder("MainWindow"));
+        mainPanel.setBackground(Color.GRAY);
+        mainPanel.setFont(font);
+        mainPanel.setLayout(new BorderLayout());
+        frame.add(mainPanel, BorderLayout.NORTH);
 
-        //panel.add(new JTextField(10));
-
-        //panel.add(label);
         textArea.setLineWrap(true);
 
         inputScrollPane.setBorder(BorderFactory.createTitledBorder("INPUT"));
         outputScrollPane.setBorder(BorderFactory.createTitledBorder("OUTPUT"));
-        panel.add(inputScrollPane, BorderLayout.NORTH);
-        panel.add(outputScrollPane, BorderLayout.SOUTH);
+        mainPanel.add(inputScrollPane, BorderLayout.NORTH);
+        mainPanel.add(outputScrollPane, BorderLayout.SOUTH);
+
+        //*****************************************************
+
+        additionalPanel.setBorder(BorderFactory.createTitledBorder("AdditionalWindow"));
+        additionalPanel.setBackground(Color.GRAY);
+        additionalPanel.setFont(font);
+        additionalPanel.setLayout(new BorderLayout());
+        frame.add(additionalPanel, BorderLayout.SOUTH);
 
         runButton.addActionListener(new ActionListener() {
             @Override
@@ -93,17 +97,21 @@ public class OLangGUI extends JFrame {
                 RunProgramm();
             }
         });
-        panel.add(runButton);
-
+        additionalPanel.add(runButton, BorderLayout.NORTH);
+        additionalPanel.add(inputText, BorderLayout.SOUTH);
         //frame.pack();
         frame.revalidate(); //перерисовка и перепроверка
 
     }
 
-    public static void outputTextProgramm() {
+    public static void outputTextProgram() {
         for (int i = 0; i < Text.textFile.size(); i++) {
             textArea.append(Text.textFile.get(i) + "\n");
         }
+    }
+
+    public static void exitProgram() {
+        System.exit(0);
     }
 
     public static void RunProgramm() {

@@ -168,6 +168,9 @@ static void Run() {
 }
 
 static void ShowCode() {
+   OLangGUI.outputTextArea.append("\n");
+   OLangGUI.outputTextArea.append("\n");
+   OLangGUI.outputTextArea.append("****************************************" + "\n");
    for (int i = 0; i < Gen.PC; i++) {
       OLangGUI.outputTextArea.append(i + ")");
       switch (M[i]) {
@@ -248,6 +251,7 @@ static void ShowCode() {
             break;
       }
    }
+   OLangGUI.outputTextArea.append("****************************************" + "\n");
 }
 
 }

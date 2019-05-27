@@ -23,31 +23,35 @@ class Text {
    static ArrayList<String> textFile = new ArrayList<String>();
 
    static void NextCh() {
-      try {
-         if( (Ch = f.read()) == -1 )
-            Ch = chEOT;
-         else if( Ch == '\n' ) {
-            OLangGUI.outputTextArea.append("\n");
+      if (Error.printText) {
+         try {
+            if( (Ch = f.read()) == -1 )
+               Ch = chEOT;
+            else if( Ch == '\n' ) {
+               OLangGUI.outputTextArea.append("\n");
 
-            //***********************
-            if (Pars.genPause) {
-               Gen.Cmd(OVM.cmPause);
-            }
-            //***********************
+               //***********************
+               if (Pars.genPause) {
+                  Gen.Cmd(OVM.cmPause);
+               }
+               //***********************
 
-            Location.Line++; Location.Pos = 0; Ch = chEOL;
+               Location.Line++; Location.Pos = 0; Ch = chEOL;
             }
-         else if( Ch == '\r' )
-            NextCh();
-         else if( Ch != '\t' ) {
-            OLangGUI.outputTextArea.append(Character.toString((char)Ch));
-            Location.Pos++;
+            else if( Ch == '\r' )
+               NextCh();
+            else if( Ch != '\t' ) {
+               OLangGUI.outputTextArea.append(Character.toString((char)Ch));
+               Location.Pos++;
             }
-         else
-            do
-               OLangGUI.outputTextArea.append(" ");
-            while( ++Location.Pos % TABSIZE != 0 );
-      } catch (IOException e) {};
+            else
+               do
+                  OLangGUI.outputTextArea.append(" ");
+               while( ++Location.Pos % TABSIZE != 0 );
+         } catch (IOException e) {};
+      } else {
+         Ch = chEOT;
+      }
    }
 
    static void Reset() {

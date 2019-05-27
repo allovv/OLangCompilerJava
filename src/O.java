@@ -25,7 +25,7 @@ public static void main(String[] args) {
    OLangGUI OGUI = new OLangGUI();
 
    OGUI.createGUI();
-   OGUI.outputTextProgramm();
+   OGUI.outputTextProgram();
    //*******************************
 }
 
